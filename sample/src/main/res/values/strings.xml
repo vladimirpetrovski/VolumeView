@@ -1,3 +1,10 @@
 <resources>
-  <string name="app_name">Volume</string>
+  <string name="app_name">VolumeView</string>
+  <string name="volume_btn_percentage">Set volume</string>
+  <string name="volume_btn_lines">Set lines</string>
+  <string name="volume_hint_percentage">e.g. 45</string>
+  <string name="volume_hint_lines">e.g. 3</string>
+  <string name="error_percentage">Error setting percentage. Value must be from 1 to 100</string>
+  <string name="error_lines">Invalid number of lines. Must be positive number.</string>
+  <string name="volume_btn_color">Set color</string>
 </resources>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".SampleActivity">
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guideline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.5"/>
+
+  <EditText
+    android:id="@+id/volume_edit_percentage"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:hint="@string/volume_hint_percentage"
+    android:inputType="number"
+    app:layout_constraintEnd_toStartOf="@+id/guideline"
+    app:layout_constraintStart_toStartOf="parent"/>
+
+  <Button
+    android:id="@+id/volume_btn_percentage"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:onClick="setVolume"
+    android:text="@string/volume_btn_percentage"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/guideline"/>
+
+  <android.support.constraint.Barrier
+    android:id="@+id/barrier_settings_percentage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:barrierDirection="bottom"
+    app:constraint_referenced_ids="volume_edit_percentage, volume_btn_percentage"/>
+
+  <EditText
+    android:id="@+id/volume_edit_lines"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:hint="@string/volume_hint_lines"
+    android:inputType="number"
+    app:layout_constraintEnd_toStartOf="@+id/guideline"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/barrier_settings_percentage"/>
+
+  <Button
+    android:id="@+id/volume_btn_lines"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:onClick="setLines"
+    android:text="@string/volume_btn_lines"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/guideline"
+    app:layout_constraintTop_toBottomOf="@+id/barrier_settings_percentage"/>
+
+  <android.support.constraint.Barrier
+    android:id="@+id/barrier_settings_lines"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:barrierDirection="bottom"
+    app:constraint_referenced_ids="volume_edit_lines, volume_btn_lines"/>
+
+  <View
+    android:id="@+id/volume_view_color"
+    android:layout_width="100dp"
+    android:layout_height="30dp"
+    android:background="@color/defaultLinesColor"
+    app:layout_constraintBottom_toTopOf="@+id/barrier_settings_color"
+    app:layout_constraintEnd_toStartOf="@+id/guideline"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/barrier_settings_lines"
+    android:onClick="openColorPicker"/>
+
+  <Button
+    android:id="@+id/volume_btn_color"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:onClick="setColor"
+    android:text="@string/volume_btn_color"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/guideline"
+    app:layout_constraintTop_toBottomOf="@+id/barrier_settings_lines"/>
+
+  <android.support.constraint.Barrier
+    android:id="@+id/barrier_settings_color"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:barrierDirection="bottom"
+    app:constraint_referenced_ids="volume_btn_color"/>
+
+  <com.vladimirpetrovski.volumeview.VolumeView
+    android:id="@+id/volume_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/barrier_settings_color"/>
+
+</android.support.constraint.ConstraintLayout>
