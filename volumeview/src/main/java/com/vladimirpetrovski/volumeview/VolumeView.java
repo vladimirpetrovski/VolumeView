@@ -64,18 +64,19 @@ public class VolumeView extends View {
     for (int i = 0; i < numOfLines * 2; i++) {
       if (i % 2 == 0) {
         if (volumeValue > 0 && i / 2 < volumeValue) {
-          canvas.drawRect(0,
-              lineHeight * i,
-              viewWidth,
-              lineHeight * i + lineHeight, unselectedLinePaint);
+          drawRect(canvas, viewWidth, lineHeight, i, unselectedLinePaint);
         } else {
-          canvas.drawRect(0,
-              lineHeight * i,
-              viewWidth,
-              lineHeight * i + lineHeight, selectedLinePaint);
+          drawRect(canvas, viewWidth, lineHeight, i, selectedLinePaint);
         }
       }
     }
+  }
+
+  private void drawRect(Canvas canvas, int viewWidth, int lineHeight, int i, Paint paint) {
+    canvas.drawRect(0,
+        lineHeight * i,
+        viewWidth,
+        lineHeight * i + lineHeight, paint);
   }
 
   /**
