@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <attr format="reference" name="volumeViewStyle"/>
+  <declare-styleable name="VolumeView">
+    <attr format="integer" name="volumeView_numOfLines"/>
+    <attr format="integer" name="volumeView_volume"/>
+    <attr format="color" name="volumeView_selectedColorLines"/>
+    <attr format="color" name="volumeView_unselectedColorLines"/>
+  </declare-styleable>
+</resources>

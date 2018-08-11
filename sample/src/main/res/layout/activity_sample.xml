@@ -71,11 +71,11 @@
     android:layout_width="100dp"
     android:layout_height="30dp"
     android:background="@color/defaultLinesColor"
+    android:onClick="openColorPicker"
     app:layout_constraintBottom_toTopOf="@+id/barrier_settings_color"
     app:layout_constraintEnd_toStartOf="@+id/guideline"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/barrier_settings_lines"
-    android:onClick="openColorPicker"/>
+    app:layout_constraintTop_toBottomOf="@+id/barrier_settings_lines"/>
 
   <Button
     android:id="@+id/volume_btn_color"
@@ -96,11 +96,15 @@
 
   <com.vladimirpetrovski.volumeview.VolumeView
     android:id="@+id/volume_view"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="180dp"
+    android:layout_height="250dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/barrier_settings_color"/>
+    app:layout_constraintTop_toBottomOf="@+id/barrier_settings_color"
+    app:volumeView_numOfLines="15"
+    app:volumeView_selectedColorLines="@color/selectedLinesColor"
+    app:volumeView_unselectedColorLines="@color/unselectedLinesColor"
+    app:volumeView_volume="45"/>
 
 </android.support.constraint.ConstraintLayout>

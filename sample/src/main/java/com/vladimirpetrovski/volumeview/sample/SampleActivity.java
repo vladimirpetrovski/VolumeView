@@ -1,5 +1,7 @@
 package com.vladimirpetrovski.volumeview.sample;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
@@ -7,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.jaredrummler.android.colorpicker.ColorPickerDialog;
@@ -35,6 +38,7 @@ public class SampleActivity extends AppCompatActivity {
       return;
     }
     int percentage = Integer.parseInt(percentageEdit.getText().toString());
+    hideSoftKeyboard(this, percentageEdit);
     volumeView.setVolume(percentage);
   }
 
@@ -43,11 +47,12 @@ public class SampleActivity extends AppCompatActivity {
       return;
     }
     int lines = Integer.parseInt(linesEdit.getText().toString());
+    hideSoftKeyboard(this, linesEdit);
     volumeView.setNumOfLines(lines);
   }
 
   public void setColor(View view) {
-    volumeView.setColorLines(((ColorDrawable) colorView.getBackground()).getColor());
+    volumeView.setSelectedColorLines(((ColorDrawable) colorView.getBackground()).getColor());
   }
 
   public void openColorPicker(View view) {
@@ -90,5 +95,11 @@ public class SampleActivity extends AppCompatActivity {
     Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_LONG);
     toast.setGravity(Gravity.TOP, 0, 0);
     toast.show();
+  }
+
+  public static void hideSoftKeyboard(Activity activity, View view) {
+    InputMethodManager imm = (InputMethodManager) activity
+        .getSystemService(Context.INPUT_METHOD_SERVICE);
+    imm.hideSoftInputFromWindow(view.getApplicationWindowToken(), 0);
   }
 }

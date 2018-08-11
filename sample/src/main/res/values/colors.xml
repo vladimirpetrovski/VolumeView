@@ -4,4 +4,6 @@
   <color name="colorPrimaryDark">#303F9F</color>
   <color name="colorAccent">#FF4081</color>
   <color name="defaultLinesColor">#3F51B5</color>
+  <color name="selectedLinesColor">@color/defaultLinesColor</color>
+  <color name="unselectedLinesColor">@android:color/darker_gray</color>
 </resources>
