@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.jaredrummler.android.colorpicker.ColorPickerDialog;
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener;
@@ -22,6 +23,7 @@ public class SampleActivity extends AppCompatActivity {
   private EditText linesEdit;
   private VolumeView volumeView;
   private View colorView;
+  private TextView currentPercentage;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,9 @@ public class SampleActivity extends AppCompatActivity {
     linesEdit = findViewById(R.id.volume_edit_lines);
     volumeView = findViewById(R.id.volume_view);
     colorView = findViewById(R.id.volume_view_color);
+    currentPercentage = findViewById(R.id.volume_text_current_percentage);
+    setCurrentPercentage(volumeView.getVolume());
+    volumeView.addEventListener(this::setCurrentPercentage);
   }
 
   public void setVolume(View view) {
@@ -69,6 +74,12 @@ public class SampleActivity extends AppCompatActivity {
       }
     });
     colorPickerDialog.show(getFragmentManager(), "color_picker");
+  }
+
+  private void setCurrentPercentage(int percentage) {
+    currentPercentage
+        .setText(String
+            .format(getString(R.string.volume_text_current_percentage), percentage));
   }
 
   private boolean validatePercentageValue() {

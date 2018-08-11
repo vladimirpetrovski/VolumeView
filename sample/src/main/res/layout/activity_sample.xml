@@ -107,4 +107,13 @@
     app:volumeView_unselectedColorLines="@color/unselectedLinesColor"
     app:volumeView_volume="45"/>
 
+  <TextView
+    android:id="@+id/volume_text_current_percentage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/volume_view"
+    tools:text="Volume set at: 50%"/>
+
 </android.support.constraint.ConstraintLayout>

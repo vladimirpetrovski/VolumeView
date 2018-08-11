@@ -9,7 +9,9 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.IntRange;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
+import java.util.ArrayList;
 
 public class VolumeView extends View {
 
@@ -20,6 +22,8 @@ public class VolumeView extends View {
 
   private Paint selectedLinePaint;
   private Paint unselectedLinePaint;
+
+  private ArrayList<OnVolumeChangedListener> listeners;
 
   public VolumeView(Context context) {
     this(context, null);
@@ -51,6 +55,27 @@ public class VolumeView extends View {
   }
 
   @Override
+  public boolean onTouchEvent(MotionEvent event) {
+    switch (event.getAction()) {
+      case MotionEvent.ACTION_DOWN:
+        refreshVolume(event);
+        break;
+      case MotionEvent.ACTION_MOVE:
+        refreshVolume(event);
+        break;
+
+    }
+    return true;
+  }
+
+  private void refreshVolume(MotionEvent event) {
+    int vol = Math.round((100 - ((event.getY() / getHeight()) * 100)));
+    if (vol > 0 && vol <= 100) {
+      setVolume(vol);
+    }
+  }
+
+  @Override
   protected void onDraw(Canvas canvas) {
     selectedLinePaint.setColor(selectedColorLines);
     unselectedLinePaint.setColor(unSelectedColorLines);
@@ -75,6 +100,32 @@ public class VolumeView extends View {
         lineHeight * i,
         viewWidth,
         lineHeight * i + lineHeight, paint);
+  }
+
+  /**
+   * Adds given event listener.
+   *
+   * @param listener a listener you want to add
+   */
+  public void addEventListener(OnVolumeChangedListener listener) {
+    if (listeners == null) {
+      listeners = new ArrayList<>();
+    }
+    listeners.add(listener);
+  }
+
+  /**
+   * Removes given event listener.
+   *
+   * @param listener a listener you want to remove
+   */
+  public void removeEventListener(OnVolumeChangedListener listener) {
+    if (listeners != null) {
+      int i = listeners.indexOf(listener);
+      if (i >= 0) {
+        listeners.remove(i);
+      }
+    }
   }
 
   /**
@@ -104,6 +155,9 @@ public class VolumeView extends View {
   public void setVolume(@IntRange(from = 1, to = 100) int volume) {
     this.volume = volume;
     invalidate();
+    for (OnVolumeChangedListener listener : listeners) {
+      listener.onVolumeChanged(volume);
+    }
   }
 
   /**
