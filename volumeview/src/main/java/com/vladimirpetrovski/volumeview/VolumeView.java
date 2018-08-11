@@ -63,7 +63,7 @@ public class VolumeView extends View {
 
     for (int i = 0; i < numOfLines * 2; i++) {
       if (i % 2 == 0) {
-        if (volumeValue > 0 && i / 2 <= volumeValue) {
+        if (volumeValue > 0 && i / 2 < volumeValue) {
           canvas.drawRect(0,
               lineHeight * i,
               viewWidth,
