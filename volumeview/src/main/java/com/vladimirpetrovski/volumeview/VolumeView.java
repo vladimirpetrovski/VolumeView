@@ -61,13 +61,11 @@ public class VolumeView extends View {
 
     double volumeValue = (double) numOfLines / 100 * (100 - volume);
 
-    for (int i = 0; i < numOfLines * 2; i++) {
-      if (i % 2 == 0) {
-        if (volumeValue > 0 && i / 2 < volumeValue) {
-          drawRect(canvas, viewWidth, lineHeight, i, unselectedLinePaint);
-        } else {
-          drawRect(canvas, viewWidth, lineHeight, i, selectedLinePaint);
-        }
+    for (int i = 0; i < numOfLines * 2; i = i + 2) {
+      if (volumeValue > 0 && i / 2 < volumeValue) {
+        drawRect(canvas, viewWidth, lineHeight, i, unselectedLinePaint);
+      } else {
+        drawRect(canvas, viewWidth, lineHeight, i, selectedLinePaint);
       }
     }
   }
