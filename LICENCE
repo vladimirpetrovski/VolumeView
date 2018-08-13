@@ -1,38 +1,3 @@
-# VolumeView
-A library which contains a volume view. This view represents percentage value as volume slider graphically.
-
-<p align="center">
-<img src ="https://github.com/vladimirpetrovski/VolumeView/blob/master/screenshots/screenshot-sample.png" width="350"/>
-</p>
-
-## Download
-```
-implementation 'com.vladimirpetrovski.android:volumeview:0.0.1'
-```
-
-## Usage
-```
-<com.vladimirpetrovski.volumeview.VolumeView
-    android:layout_width="180dp"
-    android:layout_height="250dp"
-    app:volumeView_numOfLines="15"
-    app:volumeView_selectedColorLines="#3F51B5"
-    app:volumeView_unselectedColorLines="#aaaaaa"
-    app:volumeView_volume="45"/>
-```
-Use setters in order to change values:
-```
-volumeView.setVolume(percentage);
-volumeView.setNumOfLines(lines);
-volumeView.setSelectedColorLines(newColor);
-volumeView.setUnselectedColorLines(newColor);
-```
-
-## Authors
-* Vladimir Petrovski (https://github.com/vladimirpetrovski)
-
-## Licence
-```
 The MIT License (MIT)
 
 Copyright (c) 2018 Vladimir Petrovski
@@ -54,4 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-```
