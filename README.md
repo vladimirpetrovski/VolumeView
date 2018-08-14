@@ -7,7 +7,7 @@ A library which contains a volume view. This view represents percentage value as
 
 ## Download
 ```
-implementation 'com.vladimirpetrovski.android:volumeview:0.0.1'
+implementation 'com.vladimirpetrovski.android:volumeview:0.0.2'
 ```
 
 ## Usage
